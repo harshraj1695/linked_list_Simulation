@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+input, button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+}
+
+#linked-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60px;
+    transition: all 0.5s ease;
+}
+
+.node {
+    display: inline-block;
+    border: 2px solid #333;
+    padding: 10px;
+    margin: 0 10px;
+    background-color: #fff;
+    font-size: 18px;
+    border-radius: 10px;
+    position: relative;
+    opacity: 1;
+    transform-origin: center;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.node.entering {
+    transform: scale(0);
+    opacity: 0;
+}
+
+.node.exiting {
+    transform: scale(0);
+    opacity: 0;
+}
+
+.arrow {
+    font-size: 24px;
+    margin: 0 10px;
+    color: #333;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.arrow.visible {
+    opacity: 1;
+}
+
+.node:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.1);
+    transition: 0.2s ease;
+}
+/* Animation for breaking bonds */
+.arrow.breaking {
+    animation: breakLink 0.5s forwards;
+}
+
+@keyframes breakLink {
+    from {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+    to {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+}
+
+/* Animation for creating new bonds */
+.arrow.creating {
+    animation: createLink 0.5s forwards;
+}
+
+@keyframes createLink {
+    from {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    to {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+/* Animation for moving nodes */
+.node.moving {
+    animation: moveNode 0.5s forwards;
+}
+
+@keyframes moveNode {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
